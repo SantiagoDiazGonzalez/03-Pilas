@@ -20,6 +20,8 @@ public:
 
     T pop();
 
+    T peek();
+
     bool esVacia();
 };
 
@@ -89,4 +91,15 @@ bool Pila<T>::esVacia() {
     return inicio == NULL;
 }
 
+/**
+ * Devuelve el valor que esta encima de la pila
+ * @tparam T
+ * @return dato en la cima
+ */
+template<class T>
+T Pila<T>::peek(){
+    if(esVacia())
+        throw 1;
+    return inicio->getDato();
+}
 #endif //LISTA_H
