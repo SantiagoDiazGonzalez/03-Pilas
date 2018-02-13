@@ -2,6 +2,7 @@
 #define LISTA_H
 
 #include "Nodo.h"
+
 /**
  * Clase que implementa una Pila generica, ya que puede
  * almacenar cualquier tipo de dato T
@@ -10,7 +11,7 @@
 template<class T>
 class Pila {
 private:
-    Nodo<T>* inicio;
+    Nodo<T> *inicio;
 public:
     Pila();
 
@@ -20,9 +21,9 @@ public:
 
     T pop();
 
-    T peek();
-
     bool esVacia();
+
+    T peek();
 };
 
 
@@ -43,7 +44,7 @@ Pila<T>::Pila() {
  */
 template<class T>
 Pila<T>::~Pila() {
-    while(!esVacia()){
+    while (!esVacia()) {
         pop();
     }
 }
@@ -56,9 +57,9 @@ Pila<T>::~Pila() {
  */
 template<class T>
 void Pila<T>::push(T dato) {
-    auto *aux = new Nodo<T>(dato, inicio); //auto sirve para q se determinte automaticamente el tipo de dato
+    Nodo<T> *aux = new Nodo<T>(dato, inicio);
     inicio = aux;
-    //inicio = new Nodo(dato, inicio);
+//    inicio = new Nodo(dato,inicio);
 }
 
 
@@ -69,7 +70,7 @@ void Pila<T>::push(T dato) {
  */
 template<class T>
 T Pila<T>::pop() {
-    if(esVacia())
+    if (esVacia())
         throw 1;
 
     T dato = inicio->getDato();
@@ -91,15 +92,12 @@ bool Pila<T>::esVacia() {
     return inicio == NULL;
 }
 
-/**
- * Devuelve el valor que esta encima de la pila
- * @tparam T
- * @return dato en la cima
- */
 template<class T>
-T Pila<T>::peek(){
-    if(esVacia())
+T Pila<T>::peek() {
+    if (esVacia())
         throw 1;
+
     return inicio->getDato();
 }
+
 #endif //LISTA_H
